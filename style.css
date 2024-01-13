@@ -1,14 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Sono&display=swap');
+
 * {
     margin: 0;
     padding: 0;
-    justify-content: center;
+    font-family: 'Sono';
+}
+h1{
+    text-align: center;
 }
 
-#check {
-    margin-right: 6px;
+.QnA {
+    width: 60%;
+    border: 3px solid black;
+    padding: 10px;
+    margin: auto;
+}
+
+input[type='radio'] {
+    position: fixed;
+    opacity: 0;
     pointer-events: none;
+
 }
 
-#check:checked {
-    accent-color: blue;
+label {
+    padding: 1px 16px 1px 16px;
+    text-align: left;
+    background-color: aquamarine;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+label:hover {
+    background-color: rgb(109, 30, 183);
+    color: white;
+}
+
+input[type=radio]:checked + label:after{
+    background-color: rgb(168, 130, 204);
+    color: white;
 }
