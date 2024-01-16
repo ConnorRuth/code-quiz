@@ -8,13 +8,13 @@
 </head>
 <body>
     <h1>Code Quiz</h1>  <h6 id="time" class="timer"></h6>
-    <section data-state="visible" class="start">
+    <section data-state="visible" class="start" id="entry">
         <p> This timed quiz focuses on javascript material that new learners should know after 2-3 weeks. Each time you answer incorrectly the timer will be reduced. when you are ready press begin!</p>
             <button id="start" class="button">Begin</button>
     
      </section>
     
-     <div class="QnA" data-state="hidden">
+     <div class="QnA" id="theQuiz">
         <p id="question">question</p>
     <form >
         <input type="radio" id="answer1" name="choices" class="radio">
@@ -28,9 +28,20 @@
         <input type="submit" id="submit">
 
     </form>
+     </div>
+     <div id="scorePrompt">
+        <form>
+            <input type="text" id="namePrompt"></input>
+            <input type="submit" id="giveName">
+        </form>
+     </div>
 
+     <div class="highscores" id="highscores">
+        <h2>High Scores</h2>
+        <ul>
 
-
+        </ul>
+     </div>
     <script src= "./script.js"></script>
 </body>
 </html>

@@ -30,8 +30,12 @@ var questionArr = [
         answer: "(d) char"
     }
 ]
-
-
+function hideSectionEl() {
+    var startEl = document.getElementById("entry");
+    var quizEl = document.getElementById("theQuiz");
+    startEl.style.display = "none";
+    quizEl.style.display = "contents";
+}
 // check which button is checked and set response to it when response is equal to array.answer they answered correctly
 function getResponse(event){
     event.preventDefault();
@@ -54,7 +58,6 @@ function getResponse(event){
             timeLeft= timeLeft -10;
 }
 }
-
 //changes the questions and answers to go down the options in the array
 function changeQuestion(){
 if (answered < questionArr.length ) {
@@ -70,7 +73,6 @@ if (answered < questionArr.length ) {
     ans4El.value = questionArr[i].guestAns4;
 }
 }
-
 function countdown() {
     var timerInterval = setInterval(function() {
             timeLeft--;
@@ -85,12 +87,10 @@ function countdown() {
         
     }, 500);
 }
+function showScores(){
+
+}
  startQuizEl.addEventListener('click', countdown);
+ startQuizEl.addEventListener('click', hideSectionEl);
  submitEl.addEventListener("click", getResponse);
-console.log(ans1El.textContent);
-console.log(typeof btn1El.checked);
-
-//if (element.matches('div')) {
-  //  var state = element.getAttribute("data-state");
-
 changeQuestion();
