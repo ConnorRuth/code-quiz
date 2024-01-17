@@ -12,11 +12,16 @@ body{
 h1{
     text-align: center;
 }
-h6{
+.timer{
     position: absolute;
     left: 90%;
     top: 3%;
 
+}
+.scoreLink{
+    position: absolute;
+    left: 3%;
+    top: 3%;
 }
 .start {
     width: 60%;
@@ -35,7 +40,6 @@ h6{
     border: 3px solid black;
     padding: 10px;
     margin: auto;
-    display: none;
 }
 
 input[type='radio'] {
@@ -61,7 +65,13 @@ label:hover {
 input[type='radio']:checked + label {
     background-color: plum;
 }
-
-.highscores {
- display: none;
+.scorePrompt{
+    text-align: center;
+}
+.highscores{
+    text-align: center;
+    margin: auto;
+}
+.makeHidden {
+    display: none;
 }
