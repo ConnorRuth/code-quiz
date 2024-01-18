@@ -9,8 +9,16 @@ var startQuizEl = document.getElementById('start');
 var submitQuizEl = document.getElementById('giveName');
 var scoreListEl = document.getElementById('highscores');
 var scoreLinkEl = document.getElementById('scoreLink');
+var listItemScore = document.getElementById("listOScores");
+var nameValue = document.getElementById("namePrompt");
+
 var answered = 0;
 var timeLeft = 100;
+var scores = [
+    {
+    name: nameValue.value , score: timeLeft
+    }
+];
 var questionArr = [
     {
         ask: "inside which HTML tag do we put the javascript?",
@@ -21,12 +29,36 @@ var questionArr = [
         answer: "(b) script"
     },
     {
-        ask: "which is not a variable type in javascript",
+        ask: "which is not a variable type in javascript?",
         guestAns1: "(a) var",
         guestAns2: "(b) const",
         guestAns3: "(c) let",
         guestAns4: "(d) char",
         answer: "(d) char"
+    },
+    {
+        ask: "What kind of loop is done a limited amount of times?",
+        guestAns1: "(a) for",
+        guestAns2: "(b) while",
+        guestAns3: "(c) as",
+        guestAns4: "(d) each",
+        answer: "(a) for"
+    },
+    {
+        ask: "document.__________ is how you would get HTML elements by their ID.",
+        guestAns1: "(a) querySelector",
+        guestAns2: "(b) getElementbyTag",
+        guestAns3: "(c) getElementbyClassName",
+        guestAns4: "(d) getElementbyID",
+        answer: "(d) getElementbyID"
+    },  
+    {
+        ask: "Which logical operator would you use to say something is NOT",
+        guestAns1: "(a) &",
+        guestAns2: "(b) ||",
+        guestAns3: "(c) !",
+        guestAns4: "(d) =",
+        answer: "(c) !"
     }
 ]
 function hideSectionEl() {
@@ -55,11 +87,9 @@ function getResponse(event){
         response = ans4El.textContent;}
 
     if ( questionArr[i].answer === response){
-        console.log("YOU ARE RIGHT"); 
         answered++;
         changeQuestion();
-    } else {console.log("YOU ARE WRONG");
-            timeLeft= timeLeft -10;
+    } else {timeLeft= timeLeft -10;
 }
 }
 //changes the questions and answers to go down the options in the array
@@ -83,32 +113,54 @@ function countdown() {
             timeLeft--;
             timeEl.textContent = "Time: " + timeLeft;
         if(timeLeft <= 0 || answered === questionArr.length){
-            var score = timeLeft ;
+            timeLeft === timeLeft;
             document.getElementById("theQuiz").classList.add("makeHidden");
             document.getElementById("scorePrompt").classList.remove("makeHidden");
-            if(score < 0){
-                score = 0;
-            }
             clearInterval(timerInterval);
         }
-        
-    }, 500);
+    }, 1000);
 }
+//makes the scores div hide and show upon clicking highscores
 function showScores(){
     if(scoreListEl.classList.contains("makeHidden")){
         scoreListEl.classList.remove("makeHidden");
     } else scoreListEl.classList.add("makeHidden");
 }
+//store scores as JSON into local storage
+function storeScore(){
+    localStorage.setItem("scores", JSON.stringify(scores));
+}
+//submitting name and score 
 function submitScore(event) {
     event.preventDefault();
     document.getElementById("scorePrompt").classList.add("makeHidden");
     scoreListEl.classList.remove("makeHidden");
+    console.log(scores);
+    scores.push({name:nameValue.value , score: timeLeft});
+    storeScore();
+    init();
+}
+function renderScores(){
+    listItemScore.innerHTML = "";
+    for (var x = 1; x < scores.length; x++){
+        var li = document.createElement("li");
+        li.textContent = scores[x].name +" "+ scores[x].score;
+        li.setAttribute("data-index", x);
+        listItemScore.appendChild(li);
+    }
+}
+function init(){
+   let storedScores = JSON.parse(localStorage.getItem("scores"));
+    if(storedScores !== null){
+        scores = storedScores;
+        renderScores();
+    }
 }
 changeQuestion();
+init();
  startQuizEl.addEventListener('click', countdown);
  startQuizEl.addEventListener('click', hideSectionEl);
  submitEl.addEventListener("click", getResponse);
  submitQuizEl.addEventListener('click', submitScore);
- console.log(typeof scoreListEl.classList.contains("makeHidden"));
  scoreLinkEl.addEventListener("click", showScores);
 
