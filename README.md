@@ -15,7 +15,7 @@ Any web-browser.
 
 ## link
  link to site to begin usage:
-TO DO
+ https://connorruth.github.io/code-quiz/
 
 ## Usage
 ![screenshot of Start page](https://i.imgur.com/eJvKmbv.png)
