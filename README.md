@@ -46,4 +46,4 @@ You will then be presented with your score on the board now!
 >No contributions at this time have been made.
 
 ## License
->Distributed under the MIT License. See LICENSE.txt for more information.
+Distributed under the MIT License. See LICENSE.txt for more information.
