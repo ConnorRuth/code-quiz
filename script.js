@@ -11,7 +11,6 @@ var scoreListEl = document.getElementById('highscores');
 var scoreLinkEl = document.getElementById('scoreLink');
 var listItemScore = document.getElementById("listOScores");
 var nameValue = document.getElementById("namePrompt");
-
 var answered = 0;
 var timeLeft = 100;
 var scores = [
@@ -135,7 +134,6 @@ function submitScore(event) {
     event.preventDefault();
     document.getElementById("scorePrompt").classList.add("makeHidden");
     scoreListEl.classList.remove("makeHidden");
-    console.log(scores);
     scores.push({name:nameValue.value , score: timeLeft});
     storeScore();
     init();
